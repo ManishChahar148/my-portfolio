@@ -338,6 +338,14 @@ h1, h2, h3, h4, h5, h6, figure {
   .fh5co-cover .display-tc h1 {
     font-size: 32px;
   }
+  .hero-profile-wrap {
+    width: 130px;
+    height: 130px;
+  }
+  #hero-particles {
+    width: 400px;
+    height: 400px;
+  }
   .hero-profile-ring {
     width: 130px;
     height: 130px;
@@ -381,10 +389,31 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
-.hero-profile-ring {
+.hero-profile-wrap {
+  position: relative;
   width: 160px;
   height: 160px;
   margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+#hero-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-profile-ring {
+  position: relative;
+  z-index: 1;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   padding: 4px;
   background: linear-gradient(135deg, #FF9000, #ff6b00, #ffb347);

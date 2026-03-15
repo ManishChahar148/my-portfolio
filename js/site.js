@@ -309,4 +309,212 @@
       requestAnimationFrame(loop);
     })();
   }
+
+  // --- Hero Profile Particles ---
+  var hCvs = document.getElementById('hero-particles');
+  var hWrap = document.querySelector('.hero-profile-wrap');
+  if (hCvs && hWrap) {
+    var hCtx = hCvs.getContext('2d');
+    var hDpr = window.devicePixelRatio || 1;
+    var W, H, centerX, centerY;
+
+    function sizeHero() {
+      W = hCvs.offsetWidth;
+      H = hCvs.offsetHeight;
+      hCvs.width = W * hDpr;
+      hCvs.height = H * hDpr;
+      hCtx.setTransform(hDpr, 0, 0, hDpr, 0, 0);
+      centerX = W / 2;
+      centerY = H / 2;
+    }
+    sizeHero();
+    window.addEventListener('resize', sizeHero);
+
+    var NUM = 200;
+    var hParts = [];
+    var PI2 = Math.PI * 2;
+    for (var p = 0; p < NUM; p++) {
+      var ang = Math.random() * PI2;
+      var rad = 60 + Math.random() * 160;
+      var isFollower = p < 24;
+      hParts.push({
+        x: centerX + Math.cos(ang) * rad,
+        y: centerY + Math.sin(ang) * rad,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        homeAngle: ang,
+        homeR: rad,
+        size: isFollower ? (0.8 + Math.random() * 1.8) : (1 + Math.random() * 2.5),
+        alpha: isFollower ? (0.3 + Math.random() * 0.5) : (0.2 + Math.random() * 0.5),
+        pulse: Math.random() * PI2,
+        pulseSpeed: 0.015 + Math.random() * 0.025,
+        orbitSpeed: (0.003 + Math.random() * 0.006) * (Math.random() > 0.5 ? 1 : -1),
+        driftPhase: Math.random() * PI2,
+        driftFreq: 0.005 + Math.random() * 0.015,
+        driftAmp: 0.3 + Math.random() * 0.8,
+        cursorSensitivity: 0.4 + Math.random() * 1.2,
+        wanderTimer: Math.random() * 300,
+        wanderAngle: Math.random() * PI2,
+        follower: isFollower
+      });
+    }
+
+    var hMouseX = centerX, hMouseY = centerY;
+    var hActive = false;
+    var heroSection = document.getElementById('fh5co-header');
+    var edgeProximity = 0;
+    var hFrame = 0;
+
+    document.addEventListener('mousemove', function (e) {
+      var heroRect = heroSection.getBoundingClientRect();
+      hActive = e.clientY >= heroRect.top && e.clientY <= heroRect.bottom &&
+                e.clientX >= heroRect.left && e.clientX <= heroRect.right;
+      if (hActive) {
+        var cvsRect = hCvs.getBoundingClientRect();
+        hMouseX = e.clientX - cvsRect.left;
+        hMouseY = e.clientY - cvsRect.top;
+
+        var distTop = e.clientY - heroRect.top;
+        var distBot = heroRect.bottom - e.clientY;
+        var distLeft = e.clientX - heroRect.left;
+        var distRight = heroRect.right - e.clientX;
+        var minEdgeDist = Math.min(distTop, distBot, distLeft, distRight);
+        var FADE_ZONE = 200;
+        edgeProximity = minEdgeDist >= FADE_ZONE ? 1 : minEdgeDist / FADE_ZONE;
+      } else {
+        edgeProximity = 0;
+      }
+    });
+
+    (function heroLoop() {
+      hFrame++;
+      hCtx.clearRect(0, 0, W, H);
+
+      var influence = hActive ? edgeProximity : 0;
+      var maxR = Math.min(W, H) * 0.45;
+
+      var positions = [];
+
+      for (var i = 0; i < hParts.length; i++) {
+        var hp = hParts[i];
+        hp.pulse += hp.pulseSpeed;
+        hp.homeAngle += hp.orbitSpeed;
+        hp.driftPhase += hp.driftFreq;
+
+        hp.wanderTimer--;
+        if (hp.wanderTimer <= 0) {
+          hp.wanderAngle += (Math.random() - 0.5) * 2.5;
+          hp.wanderTimer = 30 + Math.random() * 120;
+        }
+
+        var breathe = Math.sin(hp.pulse) * 8 + Math.sin(hp.driftPhase * 1.7) * 4;
+        var homeX = centerX + Math.cos(hp.homeAngle) * (hp.homeR + breathe);
+        var homeY = centerY + Math.sin(hp.homeAngle) * (hp.homeR + breathe);
+
+        var pullX = (homeX - hp.x) * 0.02;
+        var pullY = (homeY - hp.y) * 0.02;
+
+        var driftX = Math.cos(hp.wanderAngle) * hp.driftAmp;
+        var driftY = Math.sin(hp.wanderAngle) * hp.driftAmp;
+
+        var noiseX = Math.sin(hFrame * 0.013 + i * 1.7) * 0.4;
+        var noiseY = Math.cos(hFrame * 0.017 + i * 2.3) * 0.4;
+
+        var cursorFx = 0, cursorFy = 0;
+        if (influence > 0.01) {
+          var cdx = hMouseX - hp.x;
+          var cdy = hMouseY - hp.y;
+          var cDist = Math.sqrt(cdx * cdx + cdy * cdy);
+
+          if (hp.follower) {
+            var fLerp = 0.12 + (1 - Math.min(cDist / 80, 1)) * 0.15;
+            cursorFx = cdx * fLerp * influence;
+            cursorFy = cdy * fLerp * influence;
+            hp.vx *= 0.75;
+            hp.vy *= 0.75;
+            pullX *= (1 - influence);
+            pullY *= (1 - influence);
+            driftX *= (1 - influence);
+            driftY *= (1 - influence);
+            noiseX *= (1 - influence);
+            noiseY *= (1 - influence);
+          } else {
+            var attract = Math.max(0, 1 - cDist / 250) * influence * hp.cursorSensitivity;
+            cursorFx = cdx * attract * 0.03;
+            cursorFy = cdy * attract * 0.03;
+
+            var repelR = 40;
+            if (cDist < repelR && cDist > 0) {
+              var repel = (1 - cDist / repelR) * influence * 2;
+              cursorFx -= (cdx / cDist) * repel;
+              cursorFy -= (cdy / cDist) * repel;
+            }
+          }
+        }
+
+        hp.vx += pullX + driftX + noiseX + cursorFx;
+        hp.vy += pullY + driftY + noiseY + cursorFy;
+
+        hp.vx *= 0.92;
+        hp.vy *= 0.92;
+
+        hp.x += hp.vx;
+        hp.y += hp.vy;
+
+        var flickerAlpha = hp.alpha * (0.5 + Math.sin(hp.pulse * 1.5) * 0.3 + Math.sin(hp.driftPhase * 2.1) * 0.2);
+        if (influence > 0.01) flickerAlpha *= (0.8 + influence * 0.6);
+
+        var edgeDx = hp.x - centerX, edgeDy = hp.y - centerY;
+        var edgeDist = Math.sqrt(edgeDx * edgeDx + edgeDy * edgeDy);
+        var edgeFade = edgeDist < maxR ? 1 : Math.max(0, 1 - (edgeDist - maxR) / (maxR * 0.3));
+        flickerAlpha *= edgeFade;
+
+        var sz = hp.size * (0.8 + Math.sin(hp.pulse * 0.8) * 0.3);
+
+        positions.push({ x: hp.x, y: hp.y, alpha: flickerAlpha, size: sz });
+
+        if (flickerAlpha > 0.01) {
+          hCtx.beginPath();
+          hCtx.arc(hp.x, hp.y, sz, 0, PI2);
+          hCtx.fillStyle = 'rgba(255,144,0,' + flickerAlpha + ')';
+          hCtx.fill();
+
+          if (sz > 1.8) {
+            hCtx.beginPath();
+            hCtx.arc(hp.x, hp.y, sz * 2.5, 0, PI2);
+            hCtx.fillStyle = 'rgba(255,144,0,' + (flickerAlpha * 0.12) + ')';
+            hCtx.fill();
+          }
+        }
+      }
+
+      for (var i = 0; i < positions.length; i++) {
+        var a = positions[i];
+        if (a.alpha < 0.01) continue;
+        for (var j = i + 1; j < positions.length; j++) {
+          var b = positions[j];
+          if (b.alpha < 0.01) continue;
+          var dx = a.x - b.x, dy = a.y - b.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 80) {
+            var lineA = (1 - dist / 80) * 0.07 * Math.min(a.alpha, b.alpha) * (influence > 0.01 ? 1.5 : 1);
+            var midDx = ((a.x + b.x) / 2) - centerX, midDy = ((a.y + b.y) / 2) - centerY;
+            var midDist = Math.sqrt(midDx * midDx + midDy * midDy);
+            var lineFade = midDist < maxR ? 1 : Math.max(0, 1 - (midDist - maxR) / (maxR * 0.3));
+            lineA *= lineFade;
+            if (lineA > 0.004) {
+              hCtx.beginPath();
+              hCtx.moveTo(a.x, a.y);
+              hCtx.lineTo(b.x, b.y);
+              hCtx.strokeStyle = 'rgba(255,144,0,' + lineA + ')';
+              hCtx.lineWidth = 0.5;
+              hCtx.stroke();
+            }
+          }
+        }
+      }
+
+      requestAnimationFrame(heroLoop);
+    })();
+  }
 })();
