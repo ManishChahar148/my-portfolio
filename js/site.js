@@ -59,6 +59,24 @@
     });
   }
 
+  // --- Timeline line: start at first badge, end at last badge ---
+  function fitTimelineLine() {
+    var tl = document.querySelector('ul.timeline');
+    if (!tl) return;
+    var badges = tl.querySelectorAll('.timeline-badge');
+    if (badges.length < 2) return;
+    var first = badges[0];
+    var last = badges[badges.length - 1];
+    var tlRect = tl.getBoundingClientRect();
+    var firstCenter = first.getBoundingClientRect().top + first.offsetHeight / 2 - tlRect.top;
+    var lastCenter = last.getBoundingClientRect().top + last.offsetHeight / 2 - tlRect.top;
+    tl.style.setProperty('--tl-top', firstCenter + 'px');
+    tl.style.setProperty('--tl-height', (lastCenter - firstCenter) + 'px');
+  }
+  fitTimelineLine();
+  window.addEventListener('resize', fitTimelineLine);
+  window.addEventListener('load', fitTimelineLine);
+
   // --- Theme Toggle ---
   var themeBtn = document.querySelector('.theme-toggle');
   if (themeBtn) {

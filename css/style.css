@@ -923,8 +923,9 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
 }
 .timeline:before {
-  top: 20px;
-  bottom: 0;
+  top: var(--tl-top, 40px);
+  height: var(--tl-height, calc(100% - 80px));
+  bottom: auto;
   position: absolute;
   content: " ";
   width: 2px;
