@@ -31,7 +31,7 @@
 
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script>
-	(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();
+	(()=> {var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();
 	</script>
 
 	</head>
@@ -51,6 +51,7 @@
 				<li><a href="#fh5co-features">Expertise</a></li>
 				<li><a href="#fh5co-skills">Skills</a></li>
 				<li><a href="#fh5co-work">Work</a></li>
+				<li><a href="blogs.html">Blog</a></li>
 				<li><a href="#fh5co-started">Contact</a></li>
 			</ul>
 			<button class="theme-toggle" aria-label="Toggle dark mode">
@@ -489,7 +490,26 @@
 		</div>
 	</div>
 
-	
+	<div id="fh5co-blog">
+		<div class="container">
+			<div class="fh5co-heading animate-box">
+				<span>Latest Writing</span>
+				<h2>Blog</h2>
+			</div>
+			<div class="blog-cards-grid">
+				<a href="blogs/project-specific-skills.html" class="blog-preview-card animate-box">
+					<div class="blog-preview-meta">
+						<span class="blog-preview-category">Engineering</span>
+						<span class="blog-preview-date">March 15, 2026</span>
+					</div>
+					<h3>How Project-Specific Skills Supercharge Your Development Workflow</h3>
+					<p>Why generic AI prompts fall short — and how teaching your AI assistant the rules of your codebase unlocks a new level of productivity.</p>
+					<span class="blog-preview-link">Read Article <i class="icon-arrow-right3"></i></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
 	<div id="fh5co-started">
 		<div class="container">
 			<div class="cta-card animate-box">

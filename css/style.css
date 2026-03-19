@@ -1337,6 +1337,118 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 /* =========================================
+   Blog Preview Section
+   ========================================= */
+#fh5co-blog {
+  padding: 2.5em 0;
+  clear: both;
+}
+.blog-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+.blog-preview-card {
+  display: block;
+  padding: 32px;
+  background: var(--bg-card);
+  border: var(--glass-border, 1px solid var(--border-default));
+  border-radius: 16px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: var(--glass-shadow, 0 4px 12px var(--shadow-card));
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.blog-preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.blog-preview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glass-shadow-hover, 0 8px 24px var(--shadow-card-hover));
+  text-decoration: none;
+}
+.blog-preview-card:hover::before {
+  transform: scaleX(1);
+}
+.blog-preview-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.blog-preview-category {
+  display: inline-block;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 20px;
+}
+.blog-preview-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: "Space Mono", monospace;
+}
+.blog-preview-card h3 {
+  font-family: "Space Mono", monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0 0 10px;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.blog-preview-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+}
+.blog-preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Space Mono", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  transition: gap 0.2s ease;
+}
+.blog-preview-card:hover .blog-preview-link {
+  gap: 10px;
+}
+.blog-preview-link i {
+  font-size: 12px;
+}
+@media screen and (max-width: 576px) {
+  .blog-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .blog-preview-card {
+    padding: 24px;
+  }
+  .blog-preview-card h3 {
+    font-size: 18px;
+  }
+}
+
+/* =========================================
    CTA Section — Redesigned
    ========================================= */
 #fh5co-started {

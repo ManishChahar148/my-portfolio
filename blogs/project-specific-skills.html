@@ -1,0 +1,359 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>How Project-Specific Skills Supercharge Development | Manish Chahar</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Discover how project-specific AI skills transform software development workflows — from context-aware code generation to consistent architecture decisions." />
+	<meta name="keywords" content="AI skills, project-specific development, Cursor IDE, Agentic AI, developer productivity, code generation, software engineering best practices" />
+	<meta name="author" content="Manish Chahar" />
+	<link rel="shortcut icon" href="/images/manish-chahar.jpg">
+
+	<meta property="og:title" content="How Project-Specific Skills Supercharge Development | Manish Chahar"/>
+	<meta property="og:url" content="https://manishchahar.in/blogs/project-specific-skills.html"/>
+	<meta property="og:site_name" content="Manish Chahar | Senior Software Engineer"/>
+	<meta property="og:description" content="Discover how project-specific AI skills transform software development — from context-aware code generation to consistent architecture decisions."/>
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/icomoon.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/blog.css">
+
+	<script src="../js/modernizr-2.6.2.min.js"></script>
+	<script>
+	(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();
+	</script>
+
+	</head>
+	<body>
+
+	<div class="fh5co-loader"></div>
+	<div id="cursor-dot"></div>
+	<canvas id="cursor-canvas" aria-hidden="true"></canvas>
+
+	<div id="page">
+	<nav id="site-nav" class="visible blog-nav">
+		<div class="nav-inner">
+			<a href="../index.html" class="nav-logo">MC</a>
+			<ul class="nav-links">
+				<li><a href="../index.html#fh5co-about">About</a></li>
+				<li><a href="../index.html#fh5co-resume">Career</a></li>
+				<li><a href="../index.html#fh5co-features">Expertise</a></li>
+				<li><a href="../index.html#fh5co-skills">Skills</a></li>
+				<li><a href="../index.html#fh5co-work">Work</a></li>
+				<li><a href="../blogs.html" class="active">Blog</a></li>
+				<li><a href="../index.html#fh5co-started">Contact</a></li>
+			</ul>
+			<button class="theme-toggle" aria-label="Toggle dark mode">
+				<i class="icon-moon"></i>
+				<i class="icon-sun"></i>
+			</button>
+			<button class="nav-toggle" aria-label="Toggle menu">
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+	</nav>
+
+	<article class="blog-article">
+		<header class="blog-hero">
+			<div class="container">
+				<div class="blog-hero-inner">
+					<div class="blog-meta-top">
+						<span class="blog-category">Engineering</span>
+						<span class="blog-date">March 15, 2026</span>
+						<span class="blog-read-time">8 min read</span>
+					</div>
+					<h1>How Project-Specific Skills Supercharge Your Development Workflow</h1>
+					<p class="blog-subtitle">Why generic AI prompts fall short — and how teaching your AI assistant the rules of your codebase unlocks a new level of productivity.</p>
+					<div class="blog-author">
+						<div class="blog-author-avatar" style="background-image: url(../images/manish-chahar.jpg);"></div>
+						<div class="blog-author-info">
+							<strong>Manish Chahar</strong>
+							<span>Senior Software Engineer at Reltio</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="blog-content-wrap">
+				<div class="blog-body">
+
+					<p class="blog-lead">Every codebase has unwritten rules — naming conventions, folder structures, state management patterns, testing philosophies. When you onboard a new developer, it takes weeks before they stop asking "where does this go?" Now imagine your AI coding assistant never has to ask that question at all.</p>
+
+					<h2>The Problem with Generic AI Assistance</h2>
+
+					<p>Modern AI coding assistants are remarkably capable out of the box. They can write React components, generate SQL queries, and scaffold entire API endpoints. But here's the disconnect: <strong>they don't know your project.</strong></p>
+
+					<p>When you ask a generic AI to "add a new API endpoint," it might scaffold something perfectly valid — but using Express conventions when your project uses FastAPI, or placing files in <code>src/routes/</code> when your team uses <code>app/api/</code>. Every generated snippet becomes a mini code review, and you spend more time correcting the AI than you saved by using it.</p>
+
+					<div class="blog-callout">
+						<div class="blog-callout-icon">
+							<i class="icon-lightbulb"></i>
+						</div>
+						<div class="blog-callout-content">
+							<strong>The core insight:</strong> AI productivity isn't about how smart the model is — it's about how much context it has about <em>your specific project.</em>
+						</div>
+					</div>
+
+					<h2>What Are Project-Specific Skills?</h2>
+
+					<p>Project-specific skills are structured knowledge files that teach your AI assistant the rules, patterns, and conventions of your codebase. Think of them as an always-available senior engineer who knows every design decision your team has ever made.</p>
+
+					<p>A skill typically includes:</p>
+
+					<ul>
+						<li><strong>File conventions</strong> — where different types of code live, naming patterns, export styles</li>
+						<li><strong>Architecture patterns</strong> — state management approach, data fetching strategy, component composition</li>
+						<li><strong>Coding standards</strong> — TypeScript strictness, error handling patterns, logging conventions</li>
+						<li><strong>Testing philosophy</strong> — unit vs. integration boundaries, mocking strategy, coverage expectations</li>
+						<li><strong>Domain knowledge</strong> — business entities, API contracts, feature flags</li>
+					</ul>
+
+					<h2>Real-World Impact: Building an Agentic AI Platform</h2>
+
+					<p>At my current role, I work on an <strong>Agentic AI platform</strong> built with Next.js, TypeScript, and Python/FastAPI. The project has strong opinions about everything: RSC boundaries, SWR caching patterns, MCP app integration, MDX content rendering, and SSE streaming for real-time AI responses.</p>
+
+					<p>Before we introduced project-specific skills, a typical AI-assisted workflow looked like this:</p>
+
+					<div class="blog-code-block">
+						<div class="blog-code-header">
+							<span class="blog-code-label">Before: Generic AI Output</span>
+						</div>
+						<pre><code>// AI generates a client component for data fetching
+"use client";
+import { useState, useEffect } from "react";
+
+export default function UserList() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("/api/users").then(r => r.json()).then(setUsers);
+  }, []);
+  // ... renders list
+}</code></pre>
+					</div>
+
+					<p>This is valid React — but it violates three of our project's conventions: we use SWR for data fetching, server components by default, and our API calls go through a typed client layer. The "correct" version:</p>
+
+					<div class="blog-code-block">
+						<div class="blog-code-header">
+							<span class="blog-code-label">After: Skill-Informed Output</span>
+						</div>
+						<pre><code>// AI generates using project conventions
+import { getUsers } from "@/lib/api/users";
+
+export default async function UserList() {
+  const users = await getUsers();
+  return &lt;UserTable data={users} /&gt;;
+}
+
+// Client wrapper only where interactivity is needed
+// "use client" in a separate UserTable component</code></pre>
+					</div>
+
+					<p>With a project skill that encodes our RSC-first approach and SWR patterns, the AI produces the second version <em>every time</em> — zero corrections needed.</p>
+
+					<h2>The Five Dimensions of Effective Skills</h2>
+
+					<p>After months of iterating on skills for our platform, I've identified five dimensions that make the difference between a skill that gathers dust and one that genuinely accelerates your team:</p>
+
+					<div class="blog-dimensions">
+						<div class="blog-dimension-card">
+							<div class="blog-dimension-num">01</div>
+							<h3>Specificity Over Generality</h3>
+							<p>Don't write "use TypeScript." Write "all component props must use interface declarations (not type aliases), exported from the same file, suffixed with Props." The more specific the rule, the more consistently the AI follows it.</p>
+						</div>
+						<div class="blog-dimension-card">
+							<div class="blog-dimension-num">02</div>
+							<h3>Examples Beat Instructions</h3>
+							<p>Show a complete, real code example from your codebase for every pattern. AI models learn better from concrete examples than abstract descriptions. One good example is worth ten paragraphs of explanation.</p>
+						</div>
+						<div class="blog-dimension-card">
+							<div class="blog-dimension-num">03</div>
+							<h3>Anti-Patterns Are Essential</h3>
+							<p>Explicitly list what NOT to do. "Never use <code>any</code> type. Never use barrel exports. Never put business logic in components." These negative constraints are often more impactful than positive ones.</p>
+						</div>
+						<div class="blog-dimension-card">
+							<div class="blog-dimension-num">04</div>
+							<h3>Living Documentation</h3>
+							<p>Skills should evolve with your codebase. When your team adopts a new pattern or deprecates an old one, the skill should be updated in the same PR. Treat skills as code, not as documentation.</p>
+						</div>
+						<div class="blog-dimension-card">
+							<div class="blog-dimension-num">05</div>
+							<h3>Layered Architecture</h3>
+							<p>Organize skills hierarchically: a master skill for global conventions, and page/feature-specific skills that override the master for specialized areas. This prevents contradictions and keeps each skill focused.</p>
+						</div>
+					</div>
+
+					<h2>Measurable Gains</h2>
+
+					<p>Since adopting project-specific skills on our project, the results have been concrete and measurable:</p>
+
+					<div class="blog-stats">
+						<div class="blog-stat">
+							<div class="blog-stat-number">~70%</div>
+							<div class="blog-stat-label">Reduction in AI-generated code corrections</div>
+						</div>
+						<div class="blog-stat">
+							<div class="blog-stat-number">2x</div>
+							<div class="blog-stat-label">Faster onboarding for new team members</div>
+						</div>
+						<div class="blog-stat">
+							<div class="blog-stat-number">40%</div>
+							<div class="blog-stat-label">Fewer architecture-related PR comments</div>
+						</div>
+					</div>
+
+					<p>The most surprising benefit wasn't the speed — it was <strong>consistency</strong>. When every developer's AI assistant follows the same conventions, the entire codebase starts to feel like it was written by one person. Code reviews shift from "this should be a server component" to actual logic discussions.</p>
+
+					<h2>Getting Started: A Practical Template</h2>
+
+					<p>If you want to start building skills for your own project, here's a minimal structure that covers the essentials:</p>
+
+					<div class="blog-code-block">
+						<div class="blog-code-header">
+							<span class="blog-code-label">SKILL.md — Starter Template</span>
+						</div>
+						<pre><code># [Project Name] Development Skill
+
+## Stack
+- Framework: Next.js 14 (App Router)
+- Language: TypeScript (strict mode)
+- Styling: CSS Modules + design tokens
+- State: SWR for server, Zustand for client
+- Testing: Vitest + Playwright
+
+## File Conventions
+- Components: `src/components/[Feature]/[Component].tsx`
+- API routes: `src/app/api/[resource]/route.ts`
+- Hooks: `src/hooks/use[Name].ts`
+
+## Patterns
+- Default to Server Components
+- "use client" only for interactivity
+- All data fetching through typed API client
+- Error boundaries at layout level
+
+## Anti-Patterns
+- Never use `any` type
+- Never fetch in useEffect (use SWR)
+- Never put API keys in client code
+- Never use default exports for components</code></pre>
+					</div>
+
+					<h2>Beyond Individual Productivity</h2>
+
+					<p>The most powerful aspect of project-specific skills isn't what they do for a single developer — it's what they do for the team. Skills become a <strong>shared source of truth</strong> about how your codebase should evolve.</p>
+
+					<p>When a new pattern is adopted, updating the skill automatically propagates that knowledge to every developer's AI assistant. When a library is deprecated, the skill prevents the AI from suggesting it. It's like having architectural guardrails that are enforced at generation time, not just at review time.</p>
+
+					<blockquote class="blog-quote">
+						<p>"The best code review is the one that never needs to happen — because the code was generated correctly in the first place."</p>
+					</blockquote>
+
+					<p>We're entering an era where the quality of your AI-assisted development isn't determined by which model you use, but by how well you've taught it to understand your world. Project-specific skills are the bridge between generic intelligence and domain expertise.</p>
+
+					<p>Start small. Pick the three conventions your team corrects most often in code reviews. Write them down as a skill. Watch the corrections disappear.</p>
+
+					<div class="blog-cta-box">
+						<h3>Want to see my portfolio and the projects I've built?</h3>
+						<p>Check out my work, skills, and career journey.</p>
+						<a href="../index.html" class="blog-cta-btn">View Portfolio <i class="icon-arrow-right3"></i></a>
+					</div>
+
+				</div>
+
+				<aside class="blog-sidebar">
+					<div class="blog-sidebar-card">
+						<h4>Table of Contents</h4>
+						<ul class="blog-toc">
+							<li><a href="#" data-section="0">The Problem with Generic AI</a></li>
+							<li><a href="#" data-section="1">What Are Project-Specific Skills?</a></li>
+							<li><a href="#" data-section="2">Real-World Impact: Agentic AI Platform</a></li>
+							<li><a href="#" data-section="3">Five Dimensions of Effective Skills</a></li>
+							<li><a href="#" data-section="4">Measurable Gains</a></li>
+							<li><a href="#" data-section="5">Getting Started: Template</a></li>
+							<li><a href="#" data-section="6">Beyond Individual Productivity</a></li>
+						</ul>
+					</div>
+					<div class="blog-sidebar-card">
+						<h4>About the Author</h4>
+						<p>Manish Chahar is a Senior Software Engineer building Agentic AI platforms using Next.js, TypeScript, Python, and LangChain.</p>
+						<div class="blog-sidebar-socials">
+							<a href="https://github.com/ManishChahar148" target="_blank" rel="noopener" aria-label="GitHub"><i class="icon-github2"></i></a>
+							<a href="https://www.linkedin.com/in/manish-chahar/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="icon-linkedin2"></i></a>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</article>
+
+	<footer id="fh5co-footer">
+		<div class="container">
+			<div class="footer-inner">
+				<div class="footer-left">
+					<span class="footer-logo">MC</span>
+					<p>&copy; 2026 Manish Chahar. All Rights Reserved.</p>
+				</div>
+				<div class="footer-right">
+					<a href="https://github.com/ManishChahar148" target="_blank" rel="noopener" title="GitHub"><i class="icon-github2"></i></a>
+					<a href="https://www.linkedin.com/in/manish-chahar/" target="_blank" rel="noopener" title="LinkedIn"><i class="icon-linkedin2"></i></a>
+					<a href="https://www.instagram.com/_manishchahar148/" target="_blank" rel="noopener" title="Instagram"><i class="icon-instagram2"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	</div><!-- /page -->
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+	</div>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.stellar.min.js"></script>
+	<script src="../js/jquery.easypiechart.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/site.js"></script>
+	<script>
+	(function(){
+		var headings = document.querySelectorAll('.blog-body h2');
+		var tocLinks = document.querySelectorAll('.blog-toc a');
+
+		tocLinks.forEach(function(link, i){
+			link.addEventListener('click', function(e){
+				e.preventDefault();
+				if(headings[i]){
+					headings[i].scrollIntoView({behavior:'smooth', block:'start'});
+				}
+			});
+		});
+
+		function updateToc(){
+			var scrollY = window.scrollY + 120;
+			var activeIdx = 0;
+			headings.forEach(function(h, i){
+				if(h.offsetTop <= scrollY) activeIdx = i;
+			});
+			tocLinks.forEach(function(l, i){
+				l.classList.toggle('active', i === activeIdx);
+			});
+		}
+		window.addEventListener('scroll', updateToc);
+		updateToc();
+	})();
+	</script>
+
+	</body>
+</html>
